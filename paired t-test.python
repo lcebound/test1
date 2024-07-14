@@ -1,0 +1,19 @@
+from scipy import stats
+
+# Data for Dragonwell and Kona
+Dragonwell = [799.27, 798.1, 804.18, 798.87, 798.96, 799.99, 799.93, 804.55, 801.88, 796.73]
+Kona = [802.48, 796.15, 797.2, 799.92, 797.47, 796.08, 803.47, 803.07, 800.67, 799.21]
+
+# Perform paired t-test
+t_statistic, p_value = stats.ttest_rel(Dragonwell, Kona)
+
+# Print the results
+print(f"t-statistic: {t_statistic:.4f}")
+print(f"p-value: {p_value:.4f}")
+
+# Interpret the p-value
+alpha = 0.05
+if p_value < alpha:
+    print("p < 0.05: Reject the null hypothesis. There is a statistically significant difference between Dragonwell and Kona.")
+else:
+    print("p >= 0.05: Fail to reject the null hypothesis. There is no statistically significant difference between Dragonwell and Kona.")
